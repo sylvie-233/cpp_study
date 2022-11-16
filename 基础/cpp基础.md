@@ -32,6 +32,23 @@ Sylvie233的C++学习~~~
 
 ### C标准库
 
+### \<cerrno>
+
+#### errno
+
+异常编号：`/usr/include/asm-generic/`
+
+全局变量
+
+```
+errno: 
+	EAGAIN: read重试（非阻塞）
+```
+
+常与perror联合使用
+
+
+
 ### \<cmath>
 
 
@@ -41,6 +58,14 @@ Sylvie233的C++学习~~~
 ### \<cstdio>
 
 #### FILE
+
+#### rename
+
+```
+int rename(const char *oldpath, const char *newpath);
+```
+
+
 
 
 
@@ -75,7 +100,15 @@ Sylvie233的C++学习~~~
 #### fseek
 
 ```
+int fseek (FILE * stream, long int offset, int origin)
+```
 
+
+
+#### perror
+
+```
+void perror (const char * str)
 ```
 
 
@@ -96,7 +129,7 @@ Sylvie233的C++学习~~~
 
 
 
-### sprintf
+#### sprintf
 
 ```
 int sprintf(char * str, const char * format, ...)
@@ -116,9 +149,27 @@ void exit (int status)
 
 
 
+#### getenv
+
+```
+char* getenv(const char* name);
+```
+
+
+
+
+
 
 
 ### \<cstring>
+
+#### strerror
+
+```
+char * strerror (int errnum)
+```
+
+
 
 #### strlen
 
@@ -134,11 +185,21 @@ size_t strlen(const char * str)
 
 
 
-### 
+###
+
+
 
 ### 容器
 
 ### 
+
+
+
+### I/O
+
+
+
+###
 
 ### 线程
 
@@ -195,11 +256,68 @@ gcc:
 
 ### 基础
 
+GNU调试工具
+
+命令分类：
+
+```
+help:
+	aliases:
+	breakpoints: 断点
+	data:
+	files:
+	internals:
+	obscure:
+	running:
+	stack:
+	status:
+	support:
+	tracepoints:
+	user-defined:
+	
+```
+
+
+
+core文件
+
+异常调试信息文件，可结合gdb使用
+
+
+
 ### 常用参数
 
 ```
 gdb:
+	list: 符号表（代码）
+		n: 行号
+		func_name: 指定函数名
+	print: 打印
+		var: 指定变量值|表达式
+	info: 展示信息
+		breakpoints: 断点列表
+	backtrace: 栈帧信息
+	set: 修改数据
+		var: 变量
+	delete: 删除
+		breakpoints: 删除断点（指定编号）
+	x: 查看内存
+	help: 帮助
+-----------------
 	quit: 退出
+	run: 运行（可传参）
+	start: 启动（停在第一行），也可传参
+	continue: 继续
+	next: 单步执行、步过
+	step: 步入
+	finish: 结束当前函数
+	frame: 切换栈帧
+-----------------
+	break: 断点
+		n: 指定行号
+	display: 设置观察变量（每次运行都会显示）
+	undisplay: 删除观察变量
+	watch: 监听变量（修改时显示）
 ```
 
 
