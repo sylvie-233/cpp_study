@@ -10,7 +10,7 @@ Sylvie233的C++学习~~~
 
 >Update: Sylvie233
 >
->Point: C++游戏服务器编程P31
+>Point:
 
 
 
@@ -332,6 +332,44 @@ using namespace xxx;
 
 ### Utilities library(工具集)
 
+#### \<chrono>
+
+##### chrono
+
+```
+chrono:
+	duration_cast:
+	system_clock:
+		time_point:
+		now():
+	milliseconds():
+	minutes():
+	seconds():
+	
+```
+
+
+
+#### \<csignal>
+
+##### raise
+
+```
+
+```
+
+
+
+##### signal
+
+```
+
+```
+
+
+
+
+
 #### \<cstddef>
 
 ##### byte
@@ -381,6 +419,24 @@ void exit (int status)
 ```
 char* getenv(const char* name);
 ```
+
+
+
+##### rand
+
+```
+int rand();
+```
+
+
+
+##### srand
+
+```
+void srand( unsigned seed );
+```
+
+
 
 
 
@@ -535,6 +591,15 @@ template <class T>typename remove_reference<T>::type&& move (T&& arg) noexcept;
 
 #### \<memory>
 
+##### enable_shared_from_this
+
+```
+:
+	shared_from_this():
+```
+
+
+
 ##### make_shared
 
 ```
@@ -577,9 +642,11 @@ shared_ptr:
 
 ```
 unique_ptr:
-	get: 获取地址
-	reset: 重置
 	*: 解引用
+	get(): 获取地址
+	release():
+	reset(): 重置
+	
 ```
 
 
@@ -593,7 +660,8 @@ unique_ptr:
 ```
 weak_ptr:
 	use_count: 
-	lock: 转为shared_ptr
+	lock(): 转为shared_ptr
+	expired():
 ```
 
 
@@ -613,6 +681,22 @@ weak_ptr:
 
 
 ### Error handling(异常处理)
+
+#### \<cassert>
+
+##### assert
+
+```
+ifdef NDEBUG
+  define assert(condition) ((void)0)
+else
+  define assert(condition) /*implementation defined*/
+endif
+```
+
+
+
+
 
 ```
 namespace std {
@@ -730,6 +814,8 @@ std::size_t strlen( const char* str );
 
 
 
+##### to_string
+
 
 
 
@@ -738,9 +824,194 @@ std::size_t strlen( const char* str );
 
 ### Containers library(容器)
 
+#### \<array>
+
+```
+array<typename T, size_t N>:
+	[]:
+	at():
+	back():
+	empty():
+	fill():
+	front():
+	max_size():
+	size():
+	swap():
+```
+
+
+
+#### \<deque>
+
+```
+deque<typename T, typename Allocator = allocator<T>>:
+	assign():
+	at():
+	back():
+	begin():
+	clear():
+	emplace_back():
+	emplace_front():
+	empty():
+	end():
+	erase():
+	front():
+	max_size():
+	pop_back():
+	pop_front():
+	push_back():
+	push_front():
+	shrink_to_fit():
+	size():
+```
+
+
+
+#### \<forward_list>
+
+```
+forward_list<typename T, typename Allocator = allocator<T>>:
+	assign():
+	before_begin():
+	begin():
+	empty():
+	end():
+	erase_after():
+	front():
+	insert_after():
+	pop_front():
+	push_front():
+	swap():
+```
+
+
+
+#### \<list>
+
+```
+list<typename T, typename Allocator = allocator<T>>:
+	assign():
+	back():
+	begin():
+	empty():
+	end():
+	front():
+	merge():
+	pop_back():
+	pop_front():
+	push_back():
+	push_front():
+	remove():
+	reserve():
+	resize():
+	size():
+	sort():
+	splice():
+	swap():
+	unique():
+```
+
+
+
+#### \<map>
+
+```
+map<typename Key, typename T, typename Compare = less<Key>, typename Allocator = allocator<pair<const Key, T>>>:
+	begin():
+	count(): 
+	end():
+	find():
+	lower_bound():
+```
+
+
+
+#### \<queue>
+
+```
+
+```
+
+
+
+#### \<set>
+
+```
+set<typename T, typename Compare = less<T>, typename Allocator = allocator<T>>:
+	begin():
+	count():
+	empty():
+	end():
+	find():
+	lower_bound():
+	key_comp():
+	size():
+	upper_bound():
+	value_comp():
+
+multiset<typename T, typename Compare = less<T>, typename Allocator = allocator<T>>:
+```
+
+
+
+#### \<stack>
+
+```
+
+```
+
+
+
+#### \<unordered_map>
+
+```
+unordered_map<typename Key, typename T, typename Hash = hash<Key>, typename EqPred = equal_to<Key>, typename Allocator = allocator<pair<const Key, T>>>:
+	
+```
+
+
+
+#### \<unordered_set>
+
+```
+
+```
+
+
+
 #### \<vector>
 
-
+```
+vector<typename T, typename Allocator = allocator<T>>:
+	[]:
+	assign():
+	at():
+	back():
+	begin():
+	capacity():
+	cbegin():
+	cend():
+	clear():
+	crbegin():
+	crend():
+	emplace():
+	emplace_back():
+	empty():
+	end():
+	erase():
+	front():
+	insert():
+	max_size():
+	pop_back():
+	push_back():
+	rbegin():
+	rend():
+	reserve():
+	resize():
+	shrink_to_fit():
+	size():
+	swap():
+```
 
 
 
@@ -977,6 +1248,17 @@ int sprintf(char * str, const char * format, ...)
 
 #### \<fstream>
 
+##### fstream
+
+##### ios_base
+
+```
+ios_base:
+	
+```
+
+
+
 
 
 #### \<istream>
@@ -1097,6 +1379,20 @@ int sprintf(char * str, const char * format, ...)
 
 ### Atomic Operations library(原子操作)
 
+#### \<atomic>
+
+##### atomic
+
+```
+atomic<T>:
+	fetch_add():
+	fetch_sub():
+```
+
+
+
+##### atomic_int
+
 
 
 
@@ -1121,7 +1417,110 @@ int sprintf(char * str, const char * format, ...)
 
 ### Thread support library(线程)
 
+#### \<condition_variable>
+
+##### condition_variable
+
+```
+condition_variable:
+	notify_all():
+	notify_one():
+	wait():
+```
+
+
+
+
+
+#### \<future>
+
+##### async
+
+
+
+##### future
+
+```
+std::future<T>:
+	get():
+```
+
+
+
+##### launch
+
+```
+std::launch:
+	async:
+```
+
+
+
+
+
+#### \<mutex>
+
+##### adopt_lock
+
+##### lock
+
+##### lock_guard
+
+```
+lock_guard<T>:
+	
+```
+
+
+
+##### mutex
+
+```
+mutex<T>:
+	lock():
+	unlock():
+```
+
+
+
+##### unique_lock
+
+```
+unique_lock<T>:
+	
+```
+
+
+
+
+
+
+
 #### \<thread>
+
+##### this_thread
+
+```
+this_thread:
+	get_id():
+	sleep_for():
+	yield():
+```
+
+
+
+
+
+##### thread
+
+```
+thread:
+	detach():
+	get_id():
+	hardware_concurrency()
+	join():
+	joinable():
+```
 
 
 
@@ -1199,7 +1598,7 @@ help:
 	support:
 	tracepoints:
 	user-defined:
-	
+
 ```
 
 
@@ -1214,35 +1613,74 @@ core文件
 
 ```
 gdb:
-	list: 符号表（代码）
+	-p: 进程号
+	-x: 携带断点信息文件（bp文件）
+	--version: 版本
+	core文件: 记录错误信息
+-----------------
+    bt/backtrace: 栈帧信息
+    b/break: 断点
+        _n: 指定行号
+        函数名: 指定函数名
+        文件名:行号: 指定文件的行号
+        *_addr: 指定地址
+    c/continue: 继续
+	d/delete: 删除
+		_n: 删除指定序号的断点
+		display: 删除指定编号的display变量
+		breakpoints: 删除断点（指定编号）
+	disable:
+		breakpoinst: 禁用断点
+		display: 禁用指定编号的display变量
+	disas: 显示当前的汇编代码，或指函数的汇编代码
+		/m: 源码显示
+		/r: 16进制显示
+	display: 设置观察变量（每次运行都会显示）
+		/f: 
+		/x: 用十六进制看寄存器的中
+		/i $pc: 用汇编代码看下一步要执行的指令
+	enable:
+		breakpoints: 启用断点
+		display: 启用指定编号的display变量
+	file: 加载指定可执行程序
+	finish: 结束当前函数，回到函数调用点
+	frame: 切换栈帧
+	help: 帮助
+	i/info: 展示信息
+		r: 显示指定的寄存器的值
+		b/breakpoints: 断点列表
+		display: 查看display变量
+		line: 指定行
+		watchpoints: 观察点列表
+	layout: 切换视图
+		asm: 汇编视图
+	l/list: 符号表（代码）
 		n: 行号
 		func_name: 指定函数名
-	print: 打印
+	n/next: 单步执行、步过
+		ni: 单条指令
+	p/print: 打印
 		var: 指定变量值|表达式
-	info: 展示信息
-		breakpoints: 断点列表
-	backtrace: 栈帧信息
+	q/quit: 退出
+	r/run: 运行（可传参）
+	save
+		breakpoint:保存断点
 	set: 修改数据
-		var: 变量
-	delete: 删除
-		breakpoints: 删除断点（指定编号）
-	x: 查看内存
-	help: 帮助
------------------
-	quit: 退出
-	run: 运行（可传参）
+		var: 变量（$pc, $eflags,）
+		logging: 日志开启（on/off），gdb.txt日志输出文件
 	start: 启动（停在第一行），也可传参
-	continue: 继续
-	next: 单步执行、步过
-	step: 步入
-	finish: 结束当前函数
-	frame: 切换栈帧
------------------
-	break: 断点
-		n: 指定行号
-	display: 设置观察变量（每次运行都会显示）
+    shell: 执行shell命令
+	s/step: 步入
+		si: 单条指令步入
 	undisplay: 删除观察变量
 	watch: 监听变量（修改时显示）
+	x: 查看内存
+		/n: 显示内存单元的个数
+		/i: 显示汇编指令
+		/f: 输出格式（s字符串、x十六进制、d十进制、t二进制）
+		/u: 类型字节数（每个内存单元占字节数）（默认4字节，b1、h2、w4、g8）
+-----------------
+	enter: 回车（重复上一条指令）
 ```
 
 
@@ -1283,5 +1721,14 @@ clang:
 	
 clang++:
 	
+```
+
+
+
+### objdump
+
+```
+objdump:
+	-d: 复制内存指令dump
 ```
 
