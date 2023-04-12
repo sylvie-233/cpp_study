@@ -778,6 +778,12 @@ UDP数据:
 
 
 
+##### WebSocket协议
+
+<img src="Linux_C++.assets/image-20230107114504237.png" alt="image-20230107114504237" style="zoom:67%;" />
+
+
+
 
 
 
