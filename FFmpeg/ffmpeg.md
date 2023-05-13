@@ -1,72 +1,19 @@
-# FFmpeg
+# ffmpeg基础
 
 > Author: Sylvie233
 >
-> Date: 23/5/12
+> Date: 23/2/24
 >
 > Point: 
-
 
 
 [TOC]
 
 ## 基础介绍
 
-### ffmpeg
+容器
 
-```
-ffmpeg:
-	-V
-	-ac:
-	-acodec:
-	-an:
-	-ar:
-	-bsf:
-		:v:
-			h264_mp4toannexb:
-	-c:
-		:a: copy
-		:v:
-			copy
-	-codecs: 查看当前支持的编码器
-	-f: 格式
-		flv:
-		gdigrab
-	-filters: 查看当前支持的滤镜
-	-formats: 查看当前支持的封装格式
-	-g:
-	-h:
-		decoder:
-		waccels:
-	-i: 输入
-		desktop:
-	-keyint_min: 关键帧间隔
-	-list_devices:
-	-list_options:
-	-pix_fmt: 帧格式
-	-preset:
-	-r: 帧数
-	-re:
-	-rtsp_transport:
-	-s: 分辨率
-	-sc_threshold: 禁用场景识别，即禁止自动添加IDR帧
-	-t:
-	-vcodec: 视频编码格式
-	-vf: 合成视频的分辨率自适应
-	-vn:
-
-ffplay:
-	-f:
-	-i: 输入
-	-stats:
-	
-
-
-ffprobe:
-
-
-
-```
+复用、解复用
 
 
 
@@ -165,10 +112,6 @@ Session Description Protocol:
 
 
 
-
-
-
-
 ### RTMP协议
 
 实时消息传输协议
@@ -178,20 +121,63 @@ Session Description Protocol:
 
 
 
+### ffmpeg
+```
+ffmpeg:
+	-V
+	-ac:
+	-acodec:
+	-an:
+	-ar:
+	-bsf:
+		:v:
+			h264_mp4toannexb:
+	-c:
+		:a: copy
+		:v:
+			copy
+	-codecs: 查看当前支持的编码器
+	-f: 格式
+		flv:
+		gdigrab
+	-filters: 查看当前支持的滤镜
+	-formats: 查看当前支持的封装格式
+	-g:
+	-h:
+		decoder:
+		waccels:
+	-i: 输入
+		desktop:
+	-keyint_min: 关键帧间隔
+	-list_devices:
+	-list_options:
+	-pix_fmt: 帧格式
+	-preset:
+	-r: 帧数
+	-re:
+	-rtsp_transport:
+	-s: 分辨率
+	-sc_threshold: 禁用场景识别，即禁止自动添加IDR帧
+	-t:
+	-vcodec: 视频编码格式
+	-vf: 合成视频的分辨率自适应
+	-vn:
+
+ffplay:
+	-f:
+	-i: 输入
+	-stats:
+	
+
+
+ffprobe:
+
+
+
+```
 
 
 
 
 
 ## 核心内容
-
-
-
-
-
-
-
-
-
-
-
