@@ -22,6 +22,73 @@ AVC、AAC
 
 <img src="ffmpeg.assets/image-20230224145527138.png" alt="image-20230224145527138" style="zoom:67%;" />
 
+### PCM
+
+脉码编码调制
+
+### YUV
+
+### HLS协议
+
+### HTTP-FLV协议
+
+### RTSP协议
+
+实时流传输协议
+
+- RTSP：负责服务器与客户端之间的请求和响应
+- RTP：负责服务器与客户端之间传输媒体数据
+- RTCP：负责提供有关RTP传输质量的反馈，确保RTP传输的质量
+
+```
+Real Time Streaming Protocol:
+	Request: Method URL
+	Response: Status
+	Transport:
+	Range:
+	CSeq:
+	User-Agent:
+	Session:
+```
+
+
+
+rtp传输端口、rtcp传输端口
+
+RTSP传输层要求基于tcp
+
+![image-20230512111031552](ffmpeg.assets/image-20230512111031552.png)
+
+请求报文
+
+![image-20230512111111568](ffmpeg.assets/image-20230512111111568.png)
+
+响应报文
+
+![image-20230512111141052](ffmpeg.assets/image-20230512111141052.png)
+
+#### SDP协议
+
+会话描述协议
+
+多个媒体级描述、一个会话级描述
+
+```
+Session Description Protocol:
+	Session Description Protocol Version:
+	Owner/Creater, Session Id(o):
+	Time Description, active time(t):
+	Session Attribute(a):
+	Media Description, name and address(m):
+	Media Attribute(a):
+```
+
+
+
+### RTMP协议
+
+实时消息传输协议
+
 
 
 ### ffmpeg
