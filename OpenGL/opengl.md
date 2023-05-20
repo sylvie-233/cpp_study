@@ -4,7 +4,7 @@
 >
 > Date: 23/5/12
 >
-> Point: P22
+> Point: 
 
 
 
@@ -89,6 +89,8 @@ VAO定义了VBO中点数据的意义，EBO提供了VBO中的索引
 
 ### GLM
 
+OpenGL Mathematics数学库
+
 
 
 
@@ -111,6 +113,7 @@ VAO定义了VBO中点数据的意义，EBO提供了VBO中的索引
 		GL_ELEMENT_ARRAY_BUFFER:
 	glClear():
 		GL_COLOR_BUFFER_BIT:
+		GL_DEPTH_BUFFER_BIT:
 	glClearColor():
 	glCompileShader():
 	glCreateProgram():
@@ -124,6 +127,7 @@ VAO定义了VBO中点数据的意义，EBO提供了VBO中的索引
 	glDrawElements():
 	glEnable:
 		GL_CULL_FACE:
+		GL_DEPTH_TEST: 深度测试
 	glEnableVertexAttribArray():
 	glewInit():
 	glGenerateMipmap():
@@ -152,6 +156,7 @@ VAO定义了VBO中点数据的意义，EBO提供了VBO中的索引
 			GL_TEXTURE_MAG_FILTER:
 				GL_LINEAR:
 	glUniform4f(): 设置uniform变量的值
+	glUniformMatrix4fv():
 	glUseProgram(): 使用ShaderProgram
 	glVertexAttribPointer():
 	glViewport():
@@ -164,6 +169,9 @@ VAO定义了VBO中点数据的意义，EBO提供了VBO中的索引
 	glfwInit():
 	glfwMakeContextCurrent():
 	glfwPollEvents():
+	glfwSetCursorPosCallback():
+	glfwSetInputMode():
+	glfwSetScrollCallback():
 	glfwSetWindowShouldClose():
 	glfwSwapBuffers():
 	glfwTerminate():
@@ -173,7 +181,23 @@ VAO定义了VBO中点数据的意义，EBO提供了VBO中的索引
 		GLFW_OPENGL_PROFILE:
 			GLFW_OPENGL_CORE_PROFILE:
 	glfwWindowShouldClose():
-	
+<glm/glm.hpp>
+<glm/gtc/matrix_transform.hpp>
+<glm/gtc/type_ptr.hpp>:				glm命名空间
+	mat4:
+	vec3:
+	vec4:
+		x:
+		y:
+		z:
+	cross():
+	lookAt(): // 当前物体坐标、目标坐标、世界Up坐标
+	perspective():
+	radians(): 角度转弧度
+	rotate():
+	scale():
+	translate():
+	value_ptr():
 ```
 
 
@@ -276,7 +300,9 @@ uv纹理贴图
 
 ### Coordinate
 
+坐标系统
 
+<img src="opengl.assets/image-20230520100950929.png" alt="image-20230520100950929" style="zoom:67%;" />
 
 
 
@@ -284,15 +310,39 @@ uv纹理贴图
 
 ### Transformation
 
+位移、旋转、缩放
+
+在Shader中通过矩阵运算修改`gl_Position`的值
+
+缩放->旋转->位移
+
+<img src="opengl.assets/image-20230520102124540.png" alt="image-20230520102124540" style="zoom:67%;" />
 
 
 
-
-
+Z缓冲
 
 
 
 ### Camera
+
+欧拉角
+
+<img src="opengl.assets/image-20230520111211260.png" alt="image-20230520111211260" style="zoom:67%;" />
+
+
+
+View Space、位置+3个轴的向量=4*4向量
+
+<img src="opengl.assets/image-20230520105658693.png" alt="image-20230520105658693" style="zoom:67%;" />
+
+
+
+Forward向量，世界Up向量，R向量、Up向量（向量叉乘求垂直向量）|利用欧拉角求Forward向量
+
+<img src="opengl.assets/image-20230520110146857.png" alt="image-20230520110146857" style="zoom:67%;" />
+
+通过View Matrix转换为摄像机的坐标：`glm::lookAt(eye, center, up)`
 
 
 
