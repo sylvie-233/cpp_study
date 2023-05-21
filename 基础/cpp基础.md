@@ -10,7 +10,7 @@ Sylvie233的C++学习~~~
 
 >Update: Sylvie233
 >
->Point:
+>Point: P4
 
 
 
@@ -141,6 +141,20 @@ const
 
 
 
+##### using类型别名
+
+
+
+
+
+##### auto类型推断
+
+
+
+
+
+
+
 #### 注释
 
 ```
@@ -206,6 +220,10 @@ const
 
 ```
 
+##### 默认参数
+
+
+
 
 
 
@@ -262,6 +280,16 @@ using namespace xxx;
 
 
 
+
+
+
+
+### 模板
+
+
+
+
+
 ### 指针
 
 #### unique_ptr
@@ -287,6 +315,65 @@ using namespace xxx;
 ```
 
 ```
+
+
+
+
+
+#### 成员函数指针
+
+
+
+
+
+使用样例
+
+```
+struct X {
+	void f() {std::cout << "6";}
+};
+
+void f2(void (X::*p) (), X& x) {
+	(x.*p)();
+}
+
+int main() {
+	X x;
+	f2(&X::f, x); // 6
+}
+```
+
+
+
+#### 数据成员指针
+
+
+
+
+
+使用样例
+
+```
+struct X {
+	int x = 1;
+};
+
+int main() {
+	int X::* n = &X::x;
+	X x;
+	x.*n; // 1
+}
+```
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -359,7 +446,8 @@ using namespace xxx;
 ## C++标准库
 
 ```
-
+<functional>
+	invoke():
 ```
 
 
