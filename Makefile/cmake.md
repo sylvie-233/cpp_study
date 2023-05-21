@@ -4,7 +4,7 @@
 >
 > Date: 23/5/13
 >
-> Point: P12
+> Point: P15
 
 [TOC]
 
@@ -84,9 +84,27 @@ install(FILES xxx xxx DESTINATION /xxx/xxx)	# 安装文件到指定目录 （生
 	#			ARCHIVE DESTINATION: 静态库
 	#			RUNTIME DESTINATION: 二进制文件（头文件用FILES）
 	
+add_definitions(宏定义)
+	
 set(XXA XXB)								# 设置变量A的值
 	# TRUE|FLASE
-
+list(APPEND <list> [<element> ...])			# 字符串追加
+	# 	APPEND: 追加
+	#	PREPEND: 前加
+	#	POP_BACK:
+	#	POP_FRONT:
+	#	REMOVE_ITEM: 移除
+	#	REMOVE_AT:
+	#	REMOVE_DUPLICATES:
+	#	LENGTH: 长度
+	#	GET: 获取指定索引数据
+	#	FIND: 查找(-1)
+	#	INSERT:	插入
+	#	REVERSE:
+	#	SORT:	list (SORT <list> [COMPARE <compare>] [CASE <case>] [ORDER <order>])
+	
+	
+	
 message(STATUS "xxx")						# 输出自定义信息
 	#	message([STATUS|WARNING|AUTHOR_WARNING|FATAL_ERROR|SEND_ERROR] "message to display" ...)
 	#	SEND_ERROR
@@ -154,7 +172,7 @@ ${Var}			# 使用变量
 
 
 
-
+### 流程控制
 
 
 
