@@ -10,7 +10,7 @@ Sylvie233的C++学习~~~
 
 >Update: Sylvie233
 >
->Point: P4
+>Point: P9
 
 
 
@@ -151,6 +151,12 @@ const
 
 
 
+##### constexpr
+
+
+
+##### decltype
+
 
 
 
@@ -168,8 +174,30 @@ const
 #### 字面量
 
 ```
+using namespace std::literals;
+
+auto str = "233"s; // string
+```
+
+
+
+
+
+##### 用户自定义字面量
 
 ```
+std::string operator""_r(const char* std, size_t size) { // _r是自定义的
+	return { str };
+}
+
+int main() {
+	std::cout << "233"_r << '\n';
+}
+```
+
+
+
+
 
 
 
@@ -192,17 +220,29 @@ const
 
 #### 表达式
 
-```
 
-```
 
 
 
 #### 字符串
 
-```
+##### string
 
-```
+
+
+##### basic_string
+
+
+
+
+
+##### basec_string_view
+
+
+
+
+
+
 
 
 
@@ -216,11 +256,17 @@ const
 
 #### 函数
 
-```
-
-```
-
 ##### 默认参数
+
+
+
+##### lambda
+
+```
+auto func = []<typename T> (T arg) {}
+```
+
+
 
 
 
@@ -285,6 +331,8 @@ using namespace xxx;
 
 
 ### 模板
+
+#### 字符串字面量运算模板
 
 
 
@@ -409,7 +457,26 @@ int main() {
 
 ### 异常处理
 
+#### noexcept
 
+```
+void func() noexcept {}
+
+
+noexcept(expr); // 返回bool类型的纯右值
+```
+
+
+
+
+
+### STL容器
+
+
+
+
+
+### 元编程
 
 
 
@@ -446,13 +513,121 @@ int main() {
 ## C++标准库
 
 ```
+<algorithm>
+<any>
+	any:
+<array>
+<atomic>
+<barrier>
+<bit>
+<botset>
+<cassert>
+<cctype>
+<cerrno>
+<cfenv>
+<charconv>
+	from_chars():
+	to_chars():
+	
+<chrono>:
+	milliseconds:
+	seconds:
+<cmath>
+<compare>
+<complex>
+<condition_variable>
+<coroutine>
+<cstdarg>
+<cstddef>
+<cstdio>
+<cstdlib>
+<cstring>
+<ctime>
+<cuchar>
+<deque>
+<exception>
+<execution>
+<expected>
+	expected:
+<fstream>
 <functional>
+	function<T>():
 	invoke():
+<future>
+<filesystem>
+<flat_map>
+<flat_set>
+<format>:
+	format():
+<forward_list>
+<initializer_list>
+<iomanip>
+<iostream>
+<ios>
+	basic_iostream:
+	ios_base:
+<iterator>
+<latch>
+<list>
+<map>
+<mdspan>
+<memory>
+<memory_resource>
+<mutex>
+<new>
+<numbers>
+<optinal>
+	optional:
+<print>
+<queue>
+<random>
+<ranges>
+<ratio>
+<regex>
+<scoped_allocator>
+<semaphore>
+<set>
+<shared_mutex>
+<source_location>
+<span>
+<spanstream>
+<sstream>
+<stack>
+<stacktrace>
+<stdexcept>
+<stdfloat>
+<stop_token>
+<string>
+	literals:
+		""s:
+		chrono_literals:
+			ms:
+			s:
+			
+	string:
+	to_string():
+<string_view>
+<syncstream>
+<system_error>
+<thread>
+<tuple>
+	tuple:
+<type_traits>
+<typeindex>
+<typeinfo>
+<unordered_map>
+<unordered_set>
+<utility>
+<variant>
+	variant:
+<vector>
+<version>
+
 ```
 
 
 
-### Concepts library(概念)
+### 概念库
 
 
 
@@ -460,7 +635,7 @@ int main() {
 
 
 
-### Coroutines library(协程)
+### 协程库
 
 
 
@@ -472,7 +647,7 @@ int main() {
 
 
 
-### Utilities library(工具集)
+### 工具库
 
 #### \<chrono>
 
@@ -729,7 +904,7 @@ template <class T>typename remove_reference<T>::type&& move (T&& arg) noexcept;
 
 
 
-### Dynamic memory management(动态内存管理)
+### 动态内存管理
 
 #### \<memory>
 
