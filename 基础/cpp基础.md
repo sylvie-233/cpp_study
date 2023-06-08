@@ -6,17 +6,15 @@ Sylvie233的C++学习~~~
 >
 > Date: 2022/10/22
 
-
-
 >Update: Sylvie233
 >
->Point: P9
+>Point: P21
 
 
 
 [TOC]
 
-## C++介绍
+## 基础介绍
 
 Visual Studio集成开发环境
 
@@ -34,7 +32,7 @@ C98、C03、C11、C14、C17、C20
 
 
 
-## C++基础语法
+## 核心内容
 
 ### 基础语法
 
@@ -135,9 +133,17 @@ C98、C03、C11、C14、C17、C20
 
 #### 变量
 
-```
-const
-```
+![image-20230608201104966](cpp基础.assets/image-20230608201104966.png)
+
+
+
+右值的出现可更好的避免内存拷贝(移动构造)、优化拷贝开销
+
+
+
+
+
+
 
 
 
@@ -218,8 +224,6 @@ int main() {
 
 
 
-#### 表达式
-
 
 
 
@@ -270,6 +274,16 @@ auto func = []<typename T> (T arg) {}
 
 
 
+#### 结构体
+
+##### 聚合初始化
+
+
+
+
+
+
+
 
 
 
@@ -292,13 +306,25 @@ using namespace xxx;
 
 
 
-### 控制语句
+#### 控制语句
+
+
+
+##### 三路比较
+
+```
+a <=> b
+```
 
 
 
 
 
+##### 结构化绑定
 
+```
+auto [x, y] = a;
+```
 
 
 
@@ -318,7 +344,37 @@ using namespace xxx;
 
 ### 面向对象
 
+#### 成员函数
 
+##### default
+
+
+
+##### delete
+
+弃置函数
+
+
+
+
+
+
+
+##### 有引用限定的成员函数
+
+
+
+#### 构造函数
+
+##### explicit
+
+
+
+
+
+
+
+##### initializer_list初始化列表构造
 
 
 
@@ -331,6 +387,28 @@ using namespace xxx;
 
 
 ### 模板
+
+#### 类模板
+
+
+
+
+
+
+
+#### 模板推导指引
+
+##### enable_if
+
+##### enable_if_t
+
+##### is_same
+
+##### is_same_v
+
+
+
+
 
 #### 字符串字面量运算模板
 
@@ -506,6 +584,14 @@ noexcept(expr); // 返回bool类型的纯右值
 
 
 
+### 协程
+
+
+
+
+
+
+
 
 
 
@@ -517,10 +603,12 @@ noexcept(expr); // 返回bool类型的纯右值
 <any>
 	any:
 <array>
+	array:
+
 <atomic>
 <barrier>
 <bit>
-<botset>
+<bitset>
 <cassert>
 <cctype>
 <cerrno>
@@ -561,6 +649,9 @@ noexcept(expr); // 返回bool类型的纯右值
 	format():
 <forward_list>
 <initializer_list>
+	initializer_list:
+
+
 <iomanip>
 <iostream>
 <ios>
@@ -579,6 +670,8 @@ noexcept(expr); // 返回bool类型的纯右值
 <optinal>
 	optional:
 <print>
+	print:
+		
 <queue>
 <random>
 <ranges>
@@ -590,6 +683,9 @@ noexcept(expr); // 返回bool类型的纯右值
 <shared_mutex>
 <source_location>
 <span>
+	span:
+		size():
+	
 <spanstream>
 <sstream>
 <stack>
@@ -612,7 +708,12 @@ noexcept(expr); // 返回bool类型的纯右值
 <thread>
 <tuple>
 	tuple:
+		
+	
+	
 <type_traits>
+	integral:
+
 <typeindex>
 <typeinfo>
 <unordered_map>

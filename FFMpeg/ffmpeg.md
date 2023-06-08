@@ -28,6 +28,88 @@ AVC、AAC
 
 ### YUV
 
+
+
+### H264/H265
+
+![image-20230608125532983](ffmpeg.assets/image-20230608125532983.png)
+
+![image-20230608125556714](ffmpeg.assets/image-20230608125556714.png)
+
+![image-20230608125705786](ffmpeg.assets/image-20230608125705786.png)
+
+![image-20230608125730101](ffmpeg.assets/image-20230608125730101.png)
+
+
+
+
+
+
+
+#### MP4
+
+![image-20230608130127803](ffmpeg.assets/image-20230608130127803.png)
+
+![image-20230608130148446](ffmpeg.assets/image-20230608130148446.png)
+
+
+
+
+
+
+
+#### FLV
+
+
+
+
+
+
+
+
+
+
+
+#### HLS
+
+![image-20230608130335361](ffmpeg.assets/image-20230608130335361.png)
+
+![image-20230608130356616](ffmpeg.assets/image-20230608130356616.png)
+
+![image-20230608130420245](ffmpeg.assets/image-20230608130420245.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### HLS协议
 
 ### HTTP-FLV协议
