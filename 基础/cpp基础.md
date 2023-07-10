@@ -8,7 +8,7 @@ Sylvie233的C++学习~~~
 
 >Update: Sylvie233
 >
->Point: P21
+>Point: P31
 
 
 
@@ -25,6 +25,13 @@ C98、C03、C11、C14、C17、C20
 
 
 文件后缀：`.cpp`、`.hpp`
+
+### vcpkg
+
+```
+vcpkg:
+	
+```
 
 
 
@@ -224,6 +231,14 @@ int main() {
 
 
 
+##### 宏
+
+
+
+###### 变长实参
+
+
+
 
 
 
@@ -411,6 +426,36 @@ auto [x, y] = a;
 
 
 #### 字符串字面量运算模板
+
+
+
+#### 模板模板形参
+
+#### 形参包
+
+可变参数模板
+
+
+
+##### 类型约束
+
+```
+:
+	Integral:
+	
+```
+
+
+
+##### 折叠表达式
+
+
+
+
+
+#### 变量模板
+
+
 
 
 
@@ -651,7 +696,6 @@ noexcept(expr); // 返回bool类型的纯右值
 <initializer_list>
 	initializer_list:
 
-
 <iomanip>
 <iostream>
 <ios>
@@ -663,6 +707,9 @@ noexcept(expr); // 返回bool类型的纯右值
 <map>
 <mdspan>
 <memory>
+	enable_shared_from_this:
+	make_shared():
+	shared_from_this():
 <memory_resource>
 <mutex>
 <new>
@@ -694,6 +741,7 @@ noexcept(expr); // 返回bool类型的纯右值
 <stdfloat>
 <stop_token>
 <string>
+	basic_string:
 	literals:
 		""s:
 		chrono_literals:
