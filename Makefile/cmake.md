@@ -159,6 +159,12 @@ ${Var}			# 使用变量
 
 
 
+子项目中可使用父项目中定义的变量
+
+
+
+
+
 #### 预定义变量
 
 ```
@@ -173,6 +179,159 @@ ${Var}			# 使用变量
 
 
 ### 流程控制
+
+
+
+
+
+## API
+
+### add_definitions
+
+
+
+### add_executable
+
+生成可执行文件
+
+
+
+
+
+### add_library
+
+生成库文件：STATIC、SHARED
+
+
+
+### add_subdirectory
+
+添加子项目
+
+
+
+### aux_source_directory
+
+搜索源文件
+
+
+
+
+
+
+
+### cmake_minimum_required
+
+指定最低cmake版本
+
+
+
+
+
+
+
+### file
+
+文件搜索
+
+
+
+### include_directories
+
+头文件目录制定
+
+
+
+### link_directories
+
+链接库文件所在目录
+
+
+
+### link_libraries
+
+链接库文件（根据link_directories目录查找）
+
+
+
+### list
+
+```
+list(APPEND <list>) # 追加字符串
+
+list(REMOVE_ITEM <list> <value...>) # 删除字符串
+
+list(LENGTH <list> <output variable>) # 获取列表长度
+
+list(GET <list> <index...>  <output>) # 索引
+
+list<JOIN <list> <glue> <output>) # 拼接
+
+list(FIND <list> <value> <output>) # 查找
+
+list(INSERT)
+
+list(PREPEND)
+
+list(POP_BACK)
+
+list(POP_FRONT)
+
+list(REMOVE_AT <list> <index...>)
+
+list(REVERSE)
+
+list(SORT <list> [COMPARE <compare>] [CASE <case>] [ORDER <order>])
+	COMPARE:
+		STRING:
+		FILE_BASENAME:
+		MATURAL:
+	CASE:
+		SENSITIVE:
+	ORDER:
+		
+		
+```
+
+
+
+
+
+### message
+
+
+
+### project
+
+指定项目名
+
+
+
+### set
+
+设置变量值
+
+
+
+### target_link_libraries
+
+指定目标链接库文件（动态库、静态库）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

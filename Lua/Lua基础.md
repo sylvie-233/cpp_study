@@ -4,7 +4,7 @@
 >
 > Date: 23/1/1
 >
-> Point：
+> Point：Unity Lua P5
 
 [TOC]
 
@@ -85,9 +85,9 @@ local局部变量
 ```
 数据类型：
 	nil:
-	booleans:
-	numbers:
-	strings:
+	boolean:
+	number:
+	string:
 	function:
 	userdata:
 	thread:
@@ -104,6 +104,20 @@ local局部变量
 ```
 
 字符串连接：`..`
+
+字符串长度：`#str`
+
+
+
+注释
+
+```
+-- 单行
+
+--[[
+	多行
+]]
+```
 
 
 
@@ -335,7 +349,7 @@ table绑定元表
 
 #### type
 
-查看变量类型
+查看变量类型、返回string
 
 
 
@@ -400,6 +414,16 @@ package:
 
 ```
 string:
+	byte(): 转ASCII码
+	char(): ASCII转字符
+	find(): 索引从1开始
+	format(): 字符串格式化
+	gsub(): 替换
+	lower(): 转小写
+	rep(): 重复
+	reverse(): 翻转
+	sub(): 截取
+	upper(): 转大写
 	
 ```
 

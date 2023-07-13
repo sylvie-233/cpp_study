@@ -8,7 +8,7 @@ Sylvie233的C++学习~~~
 
 >Update: Sylvie233
 >
->Point: P31
+>Point: 现代C++教程P31 | C++20 STL P11
 
 
 
@@ -227,6 +227,8 @@ int main() {
 
 #pragma: 编译器相关
 	once: 引入一次
+	
+#error: 错误输出
 ```
 
 
@@ -313,6 +315,33 @@ namespace xxx {
 xxx::xxx
 
 using namespace xxx;
+```
+
+
+
+#### 模块
+
+```
+module;
+
+export module xxx;
+
+export void func();
+
+export {
+	xxx
+}
+
+export namespace xxx {
+	
+}
+
+export import xxx;
+
+---
+import <iostream>;
+
+import xxx;
 ```
 
 
@@ -456,6 +485,16 @@ auto [x, y] = a;
 #### 变量模板
 
 
+
+
+
+#### 概念、约束
+
+requires 类型约束
+
+concept 类型概念
+
+概念是一组命名到约束，可在模板中直接使用概念	
 
 
 
@@ -641,10 +680,13 @@ noexcept(expr); // 返回bool类型的纯右值
 
 
 
-## C++标准库
+## API
 
 ```
 <algorithm>
+    accumulate():
+	equal_range():
+
 <any>
 	any:
 <array>
@@ -654,7 +696,11 @@ noexcept(expr); // 返回bool类型的纯右值
 <barrier>
 <bit>
 <bitset>
+	bitset:
+		
 <cassert>
+	static_assert():
+
 <cctype>
 <cerrno>
 <cfenv>
@@ -665,10 +711,32 @@ noexcept(expr); // 返回bool类型的纯右值
 <chrono>:
 	milliseconds:
 	seconds:
+	steady_clock:
+		time_point:
+		now():
+	
 <cmath>
 <compare>
+	partial_ordering:
+	strong_ordering:
+		greater:
+		less:
+		qeual:
+		
+
 <complex>
+<concepts>
+	concept:
+	requires:
+
 <condition_variable>
+	condition_variable:
+		---
+		notify_one():
+		wait():
+		wait_for():	
+		wait_until():
+		
 <coroutine>
 <cstdarg>
 <cstddef>
@@ -678,26 +746,89 @@ noexcept(expr); // 返回bool类型的纯右值
 <ctime>
 <cuchar>
 <deque>
+	deuqe:
+		front():
+		push_back():
+
 <exception>
 <execution>
 <expected>
 	expected:
 <fstream>
 <functional>
+	bind():
+	cref():
 	function<T>():
 	invoke():
+	ref(): 引用标记
 <future>
+	future:
+		get():
+		shared():
+		wait_for():
+		wait_until():
+	launch:
+		async:
+		deferred:
+	packaged_task:
+		get_future():
+	promise:
+		get_future():
+		set_value():
+    shared_future:
+	async():
+	
 <filesystem>
+	filesystem:
+		copy_options:
+			recursive:
+		path:
+			operator/():
+			---
+			extension():
+			filename():
+			is_absolute():
+			is_relative():
+			parent_path():
+			relative_path():
+			stem():
+		directory_iterator:
+			---
+			path():
+		recusive_direcctory_iterator:
+			---
+			path():
+		absolute():
+		copy():
+		copy_file():
+		current_path():
+		exists():
+		is_directory():
+		is_regular_file():
+		remove():
+		remove_all():
+
+
 <flat_map>
 <flat_set>
 <format>:
+	formatter: 格式器特化
+		format():
+		parse():
 	format():
+	format_to():
+	make_format_args():
+	vformat():
+	
 <forward_list>
 <initializer_list>
 	initializer_list:
 
 <iomanip>
 <iostream>
+	ostream:
+
+
 <ios>
 	basic_iostream:
 	ios_base:
@@ -711,27 +842,83 @@ noexcept(expr); // 返回bool类型的纯右值
 	make_shared():
 	shared_from_this():
 <memory_resource>
+
+
 <mutex>
+	adopt_lock:
+	defer_lock:
+	lock_guard: 锁守卫
+	mutex:
+		---
+		lock():
+		try_lock_for():
+		try_lock_until():
+		unlock():
+	once_flag: 一次性标志
+	unique_lock:
+		lock():
+		unlock():
+	call_once(): 借助flag实现一次调用
+	lock():
+	
+	
 <new>
 <numbers>
 <optinal>
 	optional:
 <print>
-	print:
+	print():
 		
 <queue>
 <random>
-<ranges>
+<ranges>: 流式操作
+	ranges:
+		range:
+		copy():
+		sort():	
+    views: 可借助管道符使用
+    	drop():
+    	filter():
+    	iota():
+        reverse():
+        take():
+        transform():
+    take_view():
+
 <ratio>
 <regex>
+	regex:
+		icase:
+	regex_error:
+		code():
+	smatch:
+		matched:
+		str():
+	sregex_iterator:
+		prefix():
+		str():
+		suffix():
+	regex_replace():
+	regex_search():
+
+
 <scoped_allocator>
 <semaphore>
 <set>
 <shared_mutex>
 <source_location>
-<span>
+<span>: 包装器，可在连续对象上创建视图
 	span:
+		back():
+		begin():
+		data():
+		empty():
+		end():
+		front():
+		rbegin():
+		rend():
 		size():
+		size_bytes():
 	
 <spanstream>
 <sstream>
@@ -749,28 +936,70 @@ noexcept(expr); // 返回bool类型的纯右值
 			s:
 			
 	string:
+		c_str():
 	to_string():
 <string_view>
+	string_view:
+
 <syncstream>
 <system_error>
 <thread>
+	this_thread:
+		get_id():
+		sleep_for():
+		sleep_until():
+	thread:
+		hardware_concurrency():
+		---
+		detach(): 分离线程
+		get_id():
+		join():
+		joinable():
+		
 <tuple>
 	tuple:
 		
+	tuple_element:
+		type:
+	tuple_size:
+		valu:
+	get():
+	make_tuple():
 	
 	
 <type_traits>
+	floating_point:
 	integral:
+	is_integral_v:
+	is_pointer_v:
+	is_same_v:
+	is_signed:
+	is_signed_v:
+	make_unsigned_t:
 
 <typeindex>
 <typeinfo>
 <unordered_map>
 <unordered_set>
 <utility>
+	cmp_less():
+	move():
+	
+	
 <variant>
 	variant:
+	
 <vector>
-<version>
+	vector:
+		const_iterator:
+		size_type:
+		cbegin():
+		cend():
+		
+<version>: 宏定义
+	__cpp_lib_format:
+	has_include():
+	
 
 ```
 
