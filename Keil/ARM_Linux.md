@@ -10,11 +10,13 @@
 >
 > ​	正点原子(第三期) Linux 系统移植 P23
 >
-> ​	正点原子(第四期) Linux 驱动开发 P12
+> ​	正点原子(第四期) Linux 驱动开发 P17
 
 [TOC]
 
 ## 基础介绍
+
+
 
 
 
@@ -416,8 +418,19 @@ MODULE_AUTHOR():
 
 ```
 :
+	file:
+		private_data:
+	alloc_chrdev_region(dev_t*, unsigned, unsigned, const char*):
+	cdev_add():
+	cdev_alloc():
+	cdev_del)():
+	cdev_init():
+	class_create():
+	class_destroy():
 	copy_from_user():
 	copy_to_user():
+	device_create():
+	device_destroy():
 	ioremap(): 物理地址转为虚拟地址
 	iounmap(): 取消map映射
 		readb():
@@ -426,10 +439,16 @@ MODULE_AUTHOR():
 		writeb():
 		writew():
 		writel():
+	kfree():
+	kobject_init():
+	kobject_put():
+	kobject_set_name():
 	memcpy():
 	printk():
 	register_chrdev():
+	register_chrdev_region():
 	unregister_chrdev():
+	unregister_chrdev_region():
 ```
 
 
@@ -482,6 +501,23 @@ Linux C函数
 
 
 
+`cdev`：字符设备
+
+```
+struct cdev {
+	struct kobject kobj;
+	struct module* owner;
+	const struct file_operations* ops;
+	struct list_head list;
+	dev_t dev;
+	unsigned int count;
+}
+```
+
+
+
+
+
 注册字符设备
 
 ```
@@ -489,6 +525,26 @@ Linux C函数
 	register_chrdev(major, minor, file_operations):
 	unregister_chrdev():
 ```
+
+
+
+设备号（主设备号，次设备号），根据设备号创建设备文件节点
+
+注册字符设备
+
+udev设备管理器：自动检测设备号，加载驱动时创建设备文件节点，提供热插拔，
+
+class类管理设备
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -504,9 +560,11 @@ Linux C函数
 
 
 
+#### 设备树
 
+DTS、DTB、DTC
 
-
+![image-20230718230712858](ARM_Linux.assets/image-20230718230712858.png)
 
 
 
