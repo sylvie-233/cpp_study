@@ -10,7 +10,7 @@
 >
 > ​	正点原子(第三期) Linux 系统移植 P23
 >
-> ​	正点原子(第四期) Linux 驱动开发 P17
+> ​	正点原子(第四期) Linux 驱动开发 P25
 
 [TOC]
 
@@ -418,6 +418,14 @@ MODULE_AUTHOR():
 
 ```
 :
+	device_node: 设备树节点
+		name:
+		type:
+		property: 节点属性
+			name:
+			length:
+			value:
+		
 	file:
 		private_data:
 	alloc_chrdev_region(dev_t*, unsigned, unsigned, const char*):
@@ -440,10 +448,25 @@ MODULE_AUTHOR():
 		writew():
 		writel():
 	kfree():
+	kmalloc():
 	kobject_init():
 	kobject_put():
 	kobject_set_name():
 	memcpy():
+	of_find_compatible_node():
+	of_find_node_by_name(): 返回device_node
+	of_find_node_by_path():
+	of_find_node_by_type():
+	of_find_property(): 返回property
+	of_get_next_child():
+	of_get_parent():
+	of_iomap():
+	of_property_count_elems_of_size():
+	of_property_read_string():
+	of_property_read_string_index():
+	of_property_read_u32():
+	of_property_read_u32_array():
+	of_property_read_u32_index():
 	printk():
 	register_chrdev():
 	register_chrdev_region():
@@ -566,13 +589,140 @@ DTS、DTB、DTC
 
 ![image-20230718230712858](ARM_Linux.assets/image-20230718230712858.png)
 
+DTC编译器、DTS源码、DTB编译后文件
+
+
+
+设备树头文件`.dtsi`
+
+节点
+
+`label: node-name@unit-address`
+
+linux查看设备树节点：`/proc/device-tree/`（子节点用文件夹、属性用文件）
+
+设备树节点解析：
+
+![image-20230722191953468](ARM_Linux.assets/image-20230722191953468.png)
+
+
+
+DTS语法
+
+```
+#include <dt-bindings/input/input.h>
+#include "imx6ull.dtsi"
+
+/ {
+	
+	model = "": 设备模块信息
+	compatible = "": 兼容性列表
+	status = "": 可用状态
+	reg = <address, size>: 寄存器地址
+	ranges: 模块节点地址映射
+	aliases {
+	
+	};
+	chosen {
+		stdout-path = &uart1;
+	}
+	memory {
+		device_type = "memory"
+		reg = <>
+	}
+	reserved-memory {
+		#address-cells
+		#size-cells
+		ranges;
+		
+		linux, cma {
+			compatible = 
+			reusable;
+			size = 
+		}
+	}
+	backlight {
+		
+	};
+	pxp_v4l2 {
+	
+	};
+	regulators {
+	
+	};
+	sound {
+	
+	};
+	spi4 {
+	
+	};
+	cpus {
+		#address-cells
+		#size-cells
+	}
+	intc: interrupt-controller@xx{}
+	clocks {}
+	soc {
+		busfreq {
+			clocks
+		}
+		pmu {
+		
+		}
+		ocrams: sram@xx {
+		
+		}
+		ocrams_ddr: sram@xx {
+		
+		}
+		dma_apbh: dma-apbh@xx {
+		
+		}
+		gpmi: gpmi-nand@xx {
+		
+		}
+		aips1: aips-bus@xx {
+		
+		}
+		aips2: aips-bus@xx {
+			usbotg1: usb@xx {}
+			usbmisc: usbmisc@xx {}
+			fec1: ethernet@xx {}
+			usdhc1: usdhc@xx {}
+			i2c1: i2c@xx {
+				mag3110@xx {}
+				fxls8471@xx {}
+			}
+			uart6: serial@xx {}
+		}
+	}
+};
 
 
 
 
 
 
+---
+&xxx {} 追加内容
+```
 
+类似C语言
+
+
+
+DTS模板
+
+```
+/dts-v1/: 
+
+```
+
+
+
+
+
+驱动获取设备树节点信息：内核`of_xxx`函数
 
 
 
