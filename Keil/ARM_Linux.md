@@ -10,7 +10,7 @@
 >
 > ​	正点原子(第三期) Linux 系统移植 P23
 >
-> ​	正点原子(第四期) Linux 驱动开发 P25
+> ​	正点原子(第四期) Linux 驱动开发 P37
 
 [TOC]
 
@@ -418,6 +418,9 @@ MODULE_AUTHOR():
 
 ```
 :
+	atomic_t: 原子整型
+	atomic64_t:
+		ATOMIC_INIT():
 	device_node: 设备树节点
 		name:
 		type:
@@ -428,17 +431,33 @@ MODULE_AUTHOR():
 		
 	file:
 		private_data:
+	mutex: 互斥体
+	semaphore: 信号量
+	spinlock_t: 自旋锁
 	alloc_chrdev_region(dev_t*, unsigned, unsigned, const char*):
+	atomic_add():
+	atomic_dec_and_test():
+	atomic_inc():
+	atomic_read():
+	atomic_set():
+    atomic_sub():
 	cdev_add():
 	cdev_alloc():
 	cdev_del)():
 	cdev_init():
+	change_bit():
 	class_create():
 	class_destroy():
 	copy_from_user():
 	copy_to_user():
 	device_create():
 	device_destroy():
+	gpio_direction_input():
+	gpio_direction_output():
+	gpio_free():
+	gpio_get_value():
+	gpio_request():
+	gpio_set_value():
 	ioremap(): 物理地址转为虚拟地址
 	iounmap(): 取消map映射
 		readb():
@@ -453,14 +472,20 @@ MODULE_AUTHOR():
 	kobject_put():
 	kobject_set_name():
 	memcpy():
+	mutex_init():
+	mutex_is_locked():
+	mutex_lock():
+	mutex_trylock():
+	mutex_unlock():
 	of_find_compatible_node():
 	of_find_node_by_name(): 返回device_node
 	of_find_node_by_path():
 	of_find_node_by_type():
 	of_find_property(): 返回property
+	of_get_named_gpio():
 	of_get_next_child():
 	of_get_parent():
-	of_iomap():
+	of_iomap(): 直接利用设备树存储信息进行内存映射
 	of_property_count_elems_of_size():
 	of_property_read_string():
 	of_property_read_string_index():
@@ -468,10 +493,25 @@ MODULE_AUTHOR():
 	of_property_read_u32_array():
 	of_property_read_u32_index():
 	printk():
+	readl():
 	register_chrdev():
 	register_chrdev_region():
+	set_bit(): 原子位操作
+	sema_init(): 信号量初始化
+		down():
+		up():
+	spin_is_locked():
+	spin_lock():
+	spin_lock_init():
+	spin_lock_irq():
+	spin_lock_irqsave():
+	spin_trylock():
+	spin_unlock():
+	spin_unlock_irq():
+	spin_unlock_irqstore():
 	unregister_chrdev():
 	unregister_chrdev_region():
+	writel():
 ```
 
 
@@ -551,9 +591,13 @@ struct cdev {
 
 
 
+
+
+**设备号->设备->绑定操作回调函数->class类->利用class类为设备号创建设备节点->of函数获取设备节点->通过设备节点读取设备树属性(寄存器地址)->地址内存映射操作寄存器**
+
 设备号（主设备号，次设备号），根据设备号创建设备文件节点
 
-注册字符设备
+注册字符设备（添加设备号、绑定回调函数）
 
 udev设备管理器：自动检测设备号，加载驱动时创建设备文件节点，提供热插拔，
 
@@ -574,6 +618,60 @@ class类管理设备
 ##### LED驱动
 
 物理地址映射
+
+
+
+
+
+##### GPIO驱动
+
+pinctrl、gpio：（读取设备树信息）自动化设置PIN的复用和电气属性、配置GPIO复用
+
+
+
+![image-20230724175517688](ARM_Linux.assets/image-20230724175517688.png)
+
+
+
+
+
+PIN配置信息
+
+
+
+
+
+pinctrl子系统驱动
+
+pinctrl_desc结构体
+
+
+
+
+
+gpio驱动
+
+通用IO处理设备
+
+gpiolib、gpiochip
+
+**设备树中为外设定音pin属性节点->外设节点引用pin属性节点->外设节点配置gpio属性**
+
+
+
+
+
+**设备节点通过of函数获取gpio编号->gpio_request请求申请(避免其他设备使用)->利用gpio进行输入输出**
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -620,6 +718,10 @@ DTS语法
 	status = "": 可用状态
 	reg = <address, size>: 寄存器地址
 	ranges: 模块节点地址映射
+	pinctrl-names:
+	pinctrl-0:
+	pins:
+	cd-gpios:
 	aliases {
 	
 	};
@@ -725,6 +827,16 @@ DTS模板
 驱动获取设备树节点信息：内核`of_xxx`函数
 
 
+
+#### 并发
+
+原子操作：原子整型操作、原子位操作
+
+
+
+自旋锁、信号量（线程休眠）、互斥体
+
+顺序锁
 
 
 
